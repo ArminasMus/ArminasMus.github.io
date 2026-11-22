@@ -1,0 +1,543 @@
+/*==============================================================
+  9 laboratorinis darbas – Individualūs CSS stiliai (custom.css)
+  Autorius: Arminas Mušinskis
+  Įkeliamas PO main.css
+==============================================================*/
+
+/*--------------------------------------------------------------
+  1. Spalvų paletė ir šriftų kintamieji (Typography – 2 punktas)
+--------------------------------------------------------------*/
+:root {
+  --default-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --heading-font: "Space Grotesk", "Inter", sans-serif;
+  --nav-font: "Space Grotesk", sans-serif;
+
+  --background-color: #0b131e;
+  --surface-color: #121f30;
+  --default-color: #dbe8f4;
+  --heading-color: #f8fafc;
+  --accent-color: #2dd4bf;
+  --accent-secondary: #38bdf8;
+  --contrast-color: #07131a;
+  --nav-color: #e2e8f0;
+  --nav-hover-color: #2dd4bf;
+}
+
+body {
+  font-family: var(--default-font);
+  background-color: var(--background-color);
+  color: var(--default-color);
+  letter-spacing: 0.01em;
+}
+
+/* Antraščių stiliai (h1-h6) – vizualiai skiriasi nuo pradinio šablono */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #f0fdfa;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #99f6e4;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e0f2fe;
+}
+
+h5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* Pastraipų stilius */
+p {
+  font-family: var(--default-font);
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: #cbd5e1;
+}
+
+.section-title h2 {
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 14px;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+}
+
+/*--------------------------------------------------------------
+  2. Mygtukai (:hover, :active) ir nuorodos (3 punktas)
+--------------------------------------------------------------*/
+a {
+  color: var(--accent-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.navmenu a:hover,
+.navmenu a:focus,
+.btn:hover,
+.btn:focus,
+.social-links a:hover,
+.header-social-links a:hover,
+.portfolio-overlay a:hover,
+.scroll-top:hover {
+  text-decoration: none;
+}
+
+/* Mygtukai */
+.btn,
+.hero .hero-actions .btn,
+.portfolio .btn-primary,
+.contact .contact-form .btn,
+.about .intro-content .cta-group .btn-ghost {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 12px;
+  padding: 12px 28px;
+  transition: all 0.25s ease;
+}
+
+.btn-primary,
+.hero .hero-actions .btn.btn-primary,
+.portfolio .btn-primary,
+.contact .contact-form .btn.btn-primary {
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+  border: 2px solid transparent;
+  color: #06131c;
+  box-shadow: 0 8px 22px rgba(45, 212, 191, 0.28);
+}
+
+.btn-primary:hover,
+.hero .hero-actions .btn.btn-primary:hover,
+.portfolio .btn-primary:hover,
+.contact .contact-form .btn.btn-primary:hover {
+  background: linear-gradient(135deg, #5eead4, #38bdf8);
+  color: #041018;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.4);
+}
+
+.btn-primary:active,
+.hero .hero-actions .btn.btn-primary:active,
+.portfolio .btn-primary:active,
+.contact .contact-form .btn.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.25);
+}
+
+.hero .hero-actions .btn.btn-outline,
+.about .intro-content .cta-group .btn-ghost {
+  background: rgba(45, 212, 191, 0.08);
+  border: 2px solid var(--accent-color);
+  color: #99f6e4;
+}
+
+.hero .hero-actions .btn.btn-outline:hover,
+.about .intro-content .cta-group .btn-ghost:hover {
+  background: var(--accent-color);
+  color: #06131c;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(45, 212, 191, 0.3);
+}
+
+.hero .hero-actions .btn.btn-outline:active,
+.about .intro-content .cta-group .btn-ghost:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/*--------------------------------------------------------------
+  3. Elementų išdėstymas (Margin/Padding) ir turinio blokai (4 punktas)
+--------------------------------------------------------------*/
+#about.about.section {
+  padding: 90px 0 50px 0;
+}
+
+#resume.resume.section {
+  padding: 85px 0 75px 0;
+}
+
+#portfolio.portfolio.section {
+  padding: 85px 0 85px 0;
+}
+
+#about .section-title,
+#resume .section-title,
+#portfolio .section-title {
+  margin-bottom: 20px;
+  padding-bottom: 36px;
+}
+
+/* Patobulinti turinio blokai kiekvienoje sekcijoje */
+.custom-card-block,
+.skills .skill-box,
+.services .service-item,
+.portfolio .portfolio-card,
+.contact .info-box,
+.contact .contact-form {
+  background: linear-gradient(160deg, #132236 0%, #0f1b2b 100%);
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card-block {
+  padding: 2.25rem;
+}
+
+.skills .skill-box:hover,
+.services .service-item:hover,
+.portfolio .portfolio-card:hover {
+  border-color: rgba(45, 212, 191, 0.55);
+  box-shadow: 0 18px 42px rgba(14, 165, 233, 0.18);
+}
+
+.resume .resume-item {
+  margin-bottom: 2rem;
+}
+
+.portfolio .portfolio-card .portfolio-img {
+  background-color: #0b131e;
+  padding: 12px;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.16);
+}
+
+.portfolio .portfolio-card .portfolio-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/*--------------------------------------------------------------
+  4. Pasirinktų svetainės komponentų stiliai (5 punktas)
+     1) Navigacijos juosta (#header, #navmenu)
+     2) Progreso juostos (.progress, .progress-bar)
+     3) Mygtukas „Į viršų“ (#scroll-top)
+--------------------------------------------------------------*/
+
+/* Komponentas 1: Navigacijos juosta (pakeista >3 CSS savybių) */
+.header.light-background {
+  background: rgba(11, 19, 30, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(45, 212, 191, 0.35);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  padding: 12px 0;
+}
+
+.header .logo {
+  gap: 10px;
+  text-decoration: none;
+}
+
+.sitename-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+  color: #06131c;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.sitename-text {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+@media (min-width: 1200px) {
+  .navmenu > ul > li {
+    padding: 6px 8px;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .navmenu > ul > li > a:before {
+    display: none;
+  }
+
+  .navmenu li:hover > a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    background-color: rgba(45, 212, 191, 0.16);
+    color: #5eead4;
+    box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.45);
+  }
+}
+
+/* Komponentas 2: Progreso juostos (pakeista >3 CSS savybių) */
+.skills .skill-box .progress,
+.resume .skill-item .progress {
+  height: 12px;
+  background-color: #0a121c;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 999px;
+  padding: 2px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.skills .skill-box .progress .progress-bar,
+.resume .skill-item .progress .progress-bar {
+  background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.55);
+}
+
+/* Komponentas 3: „Į viršų“ mygtukas (pakeista >3 CSS savybių) */
+.scroll-top {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+  border: 2px solid #99f6e4;
+  box-shadow: 0 8px 24px rgba(45, 212, 191, 0.4);
+}
+
+.scroll-top i {
+  color: #06131c;
+  font-size: 26px;
+}
+
+.scroll-top:hover {
+  background: linear-gradient(135deg, #5eead4, #38bdf8);
+  transform: translateY(-4px);
+}
+
+/*--------------------------------------------------------------
+  5. Papildoma užduotis: Sąrašų stiliai (pseudo-elementai + skaitikliai)
+--------------------------------------------------------------*/
+ul.custom-tech-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+ul.custom-tech-list > li {
+  position: relative;
+  padding: 10px 14px 10px 38px;
+  margin-bottom: 10px;
+  background: rgba(11, 19, 30, 0.55);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 10px;
+  color: #e2e8f0;
+}
+
+ul.custom-tech-list > li::before {
+  content: "▸";
+  position: absolute;
+  left: 14px;
+  top: 9px;
+  color: #2dd4bf;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+ol.custom-steps-list {
+  list-style: none;
+  counter-reset: step-counter;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+ol.custom-steps-list > li {
+  counter-increment: step-counter;
+  position: relative;
+  padding: 12px 14px 12px 52px;
+  margin-bottom: 12px;
+  background: rgba(11, 19, 30, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  color: #e2e8f0;
+}
+
+ol.custom-steps-list > li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+  color: #06131c;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Atskiras stilius įdėtiniam sąrašui (Nested List) */
+.nested-list {
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  padding: 10px 14px;
+  background: rgba(45, 212, 191, 0.08);
+  border-left: 3px solid #38bdf8;
+  border-radius: 0 8px 8px 0;
+}
+
+.nested-list li {
+  position: relative;
+  padding: 5px 0 5px 22px;
+  font-size: 0.94rem;
+  color: #bae6fd;
+}
+
+.nested-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  font-size: 0.7rem;
+  color: #38bdf8;
+}
+
+/*--------------------------------------------------------------
+  6. Papildoma užduotis: Lentelės stilius (Antraštė, Zebra, Hover, Padding, Centravimas)
+--------------------------------------------------------------*/
+.services-pricing-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: #e2e8f0;
+  --bs-table-border-color: rgba(148, 163, 184, 0.2);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.services-pricing-table thead th {
+  background-color: transparent;
+  background: linear-gradient(90deg, #0f766e, #0369a1);
+  color: #ffffff;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 20px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 2px solid #2dd4bf;
+}
+
+.services-pricing-table tbody td {
+  padding: 16px 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+/* Zebra stilius */
+.services-pricing-table tbody tr:nth-child(odd) td {
+  background-color: #101d2d;
+}
+
+.services-pricing-table tbody tr:nth-child(even) td {
+  background-color: #16283d;
+}
+
+/* Hover efektas eilutėms */
+.services-pricing-table tbody tr:hover td {
+  background-color: rgba(45, 212, 191, 0.2);
+  transition: background-color 0.25s ease;
+}
+
+.services-pricing-table tbody td:last-child {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  color: #5eead4;
+}
+
+/*--------------------------------------------------------------
+  7. Medijos blokų stilius (8 LD Papildoma užduotis)
+--------------------------------------------------------------*/
+.media-card {
+  background: rgba(11, 19, 30, 0.65);
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.custom-media-video {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  background: #050a10;
+}
+
+.custom-iframe-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.custom-media-audio {
+  width: 100%;
+  margin-top: 8px;
+}
